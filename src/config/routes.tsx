@@ -21,7 +21,9 @@ export const browserRouter = createBrowserRouter([
         path: '*',
         element: <ErrorPage />,
     }
-])
+], {
+    basename: '/simple-apps/',
+})
 
 export const routes = [
     {
