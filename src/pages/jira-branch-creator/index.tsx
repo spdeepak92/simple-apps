@@ -19,6 +19,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { useState } from "react"
+import { HandPlatter } from "lucide-react"
 
 export default function JiraBranchCreator() {
     const [branchValue, setBranchValue] = useState("")
@@ -64,7 +65,7 @@ export default function JiraBranchCreator() {
                             name="removeString"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Remove Substrings (comma-separated):</FormLabel>
+                                    <FormLabel>Remove Substrings (comma-separated)</FormLabel>
                                     <FormControl>
                                         <Input placeholder="e.g. FE, BE, DEV" {...field} />
                                     </FormControl>
@@ -79,7 +80,7 @@ export default function JiraBranchCreator() {
                             name="skipLowercase"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Skip Lowercase for:</FormLabel>
+                                    <FormLabel>Skip Lowercase for</FormLabel>
                                     <FormControl>
                                         <Input placeholder="e.g. MLX, JIR" {...field} />
                                     </FormControl>
@@ -97,7 +98,7 @@ export default function JiraBranchCreator() {
                             name="addPrefix"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Add Prefix:</FormLabel>
+                                    <FormLabel>Add Prefix</FormLabel>
                                     <Select
                                         onValueChange={(value: string) => {
                                             field.onChange(value)
@@ -125,14 +126,15 @@ export default function JiraBranchCreator() {
                 </div>
                 <Button type="submit">Generate</Button>
 
-                {branchValue && (
-                    <div className="flex p-2 bg-slate-200 rounded-sm">
-                        <div className="flex flex-1 col-span-9 items-center">
-                            <p className="text-slate-600">{branchValue}</p>
-                        </div>
-                        <Button onClick={() => copyToClipboard(branchValue, setBtnValue)} type="button">{btnValue}</Button>
+                <div className="flex p-2 bg-slate-200 rounded-sm">
+                    <div className="flex flex-1 col-span-9 items-center">
+                        <p className="text-slate-600">{branchValue}</p>
                     </div>
-                )}
+                    {branchValue
+                        ? <Button onClick={() => copyToClipboard(branchValue, setBtnValue)} type="button">{btnValue}</Button>
+                        : <Button type="button" size="icon"><HandPlatter className="h-5 w-5" /></Button>
+                    }
+                </div>
             </form>
         </Form>
     )

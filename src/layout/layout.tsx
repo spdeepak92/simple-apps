@@ -12,7 +12,7 @@ export default function Layout() {
                 <Header />
                 <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
                     <div
-                        className="p-4 flex flex-1 rounded-lg border border-slate-200 border-dashed shadow-sm dark:border-slate-800 shadow-xl shadow-slate-200"
+                        className="p-5 flex rounded-lg border border-slate-200 dark:border-slate-800 shadow-md shadow-slate-200"
                     >
                         <Outlet />
                     </div>
