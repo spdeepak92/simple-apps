@@ -20,7 +20,7 @@ const parseMarkdown = (markdown: string) => {
     let html = markdown;
 
     // Code blocks with language
-    html = html.replace(/```(\w+)\n([\s\S]*?)```/gm, (match, language, code) => {
+    html = html.replace(/```(\w+)\n([\s\S]*?)```/gm, (_match, _language, code) => {
         return `<div style="background-color: #f8f8f8; border-radius: 4px; padding: 16px; margin: 12px 0; overflow-x: auto;">
       <pre style="margin: 0;"><code style="font-family: monospace;">${code
                 .replace(/&/g, '&amp;')
@@ -33,7 +33,7 @@ const parseMarkdown = (markdown: string) => {
     });
 
     // Code blocks without language specification
-    html = html.replace(/```([\s\S]*?)```/gm, (match, code) => {
+    html = html.replace(/```([\s\S]*?)```/gm, (_match, code) => {
         return `<div style="background-color: #f8f8f8; border-radius: 4px; padding: 16px; margin: 12px 0; overflow-x: auto;">
       <pre style="margin: 0;"><code style="font-family: monospace;">${code
                 .replace(/&/g, '&amp;')
@@ -60,7 +60,7 @@ const parseMarkdown = (markdown: string) => {
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" style="color: #3b82f6; text-decoration: none;">$1</a>');
 
     // Lists - using inline styles
-    html = html.replace(/^\s*[\*\-] (.*)/gim, (match, item) => {
+    html = html.replace(/^\s*[\*\-] (.*)/gim, (_match, item) => {
         return `<ul style="list-style-type: disc; padding-left: 2rem; margin: 0.5rem 0;"><li style="margin: 0.25rem 0;">${item}</li></ul>`;
     });
 
